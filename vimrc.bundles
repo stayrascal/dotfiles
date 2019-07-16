@@ -12,6 +12,8 @@ call plug#begin('~/.vim/bundle')
 
 " Appearance {{{
 Plug 'w0ng/vim-hybrid'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'croaky/vim-colors-github'
 Plug 'junegunn/seoul256.vim'
@@ -24,53 +26,53 @@ Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable'  }
 "     let g:indentLine_char = '┊'
 "     let g:indentLine_color_term = 239
 
-Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-airline'
-    let g:airline_theme='light'
-    let g:airline#extensions#branch#enabled = 1
-    let g:airline#extensions#branch#empty_message = ''
-    let g:airline#extensions#syntastic#enabled = 1
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'bling/vim-airline'
+"    let g:airline_theme='light'
+"    let g:airline#extensions#branch#enabled = 1
+"    let g:airline#extensions#branch#empty_message = ''
+"    let g:airline#extensions#syntastic#enabled = 1
 
-    " modify airline symbols
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
-    let g:airline_left_sep = '»'
-    let g:airline_left_sep = '▶'
-    let g:airline_right_sep = '«'
-    " let g:airline_right_sep = '◀'
-    let g:airline_symbols.linenr = '␊'
-    let g:airline_symbols.linenr = '␤'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    let g:airline_symbols.paste = 'Þ'
-    let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.whitespace = 'Ξ'
-    " let g:airline_symbols.whitespace = '☯'
-    " shorter mode names
-    let g:airline_mode_map = {
-        \ '__' : '-',
-        \ 'n'  : 'N',
-        \ 'i'  : 'I',
-        \ 'R'  : 'R',
-        \ 'c'  : 'C',
-        \ 'v'  : 'V',
-        \ 'V'  : 'V',
-        \ '' : 'V',
-        \ 's'  : 'S',
-        \ 'S'  : 'S',
-        \ '' : 'S',
-        \ }
-    " control which sections get truncated and at what width. >
-    let g:airline#extensions#default#section_truncate_width = {
-        \   'b': 79,
-        \   'x': 60,
-        \   'y': 88,
-        \   'z': 45,
-        \ }
-    " disable summary of changed hunks under source control.
-    let g:airline#extensions#hunks#enabled = 0
+"    " modify airline symbols
+"    if !exists('g:airline_symbols')
+"        let g:airline_symbols = {}
+"    endif
+"    let g:airline_left_sep = '»'
+"    let g:airline_left_sep = '▶'
+"    let g:airline_right_sep = '«'
+"    " let g:airline_right_sep = '◀'
+"    let g:airline_symbols.linenr = '␊'
+"    let g:airline_symbols.linenr = '␤'
+"    let g:airline_symbols.linenr = '¶'
+"    let g:airline_symbols.branch = '⎇'
+"    let g:airline_symbols.paste = 'ρ'
+"    let g:airline_symbols.paste = 'Þ'
+"    let g:airline_symbols.paste = '∥'
+"    let g:airline_symbols.whitespace = 'Ξ'
+"    " let g:airline_symbols.whitespace = '☯'
+"    " shorter mode names
+"    let g:airline_mode_map = {
+"        \ '__' : '-',
+"        \ 'n'  : 'N',
+"        \ 'i'  : 'I',
+"        \ 'R'  : 'R',
+"        \ 'c'  : 'C',
+"        \ 'v'  : 'V',
+"        \ 'V'  : 'V',
+"        \ '' : 'V',
+"        \ 's'  : 'S',
+"        \ 'S'  : 'S',
+"        \ '' : 'S',
+"        \ }
+"    " control which sections get truncated and at what width. >
+"    let g:airline#extensions#default#section_truncate_width = {
+"        \   'b': 79,
+"        \   'x': 60,
+"        \   'y': 88,
+"        \   'z': 45,
+"        \ }
+"    " disable summary of changed hunks under source control.
+"    let g:airline#extensions#hunks#enabled = 0
 " }}}
 
 " Core {{{

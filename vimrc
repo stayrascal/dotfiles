@@ -1,3 +1,15 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+" Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+call vundle#end()
+filetype plugin indent on
+
 " Leader
 let mapleader = " "
 " ; is easier than :
@@ -8,7 +20,17 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" let g:UltiSnipsEditSplit="vertical"
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -62,12 +84,12 @@ set tags+=gems.tags
 
 " Color scheme
 set background=dark
-colorscheme hybrid
+" colorscheme solarized
 set guifont=Menlo\ Regular:h13
 
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+set textwidth=150
+" set colorcolumn=+1
 
 " Numbers
 set number
@@ -130,6 +152,10 @@ endfunction
     nmap <C-k> <C-W>k
     nmap <C-h> <C-W>h
     nmap <C-l> <C-W>l
+    map <Left> <Nop>
+    map <Right> <Nop>
+    map <Up> <Nop>
+    map <Down> <Nop>
 " }}}
 
 " Function keys {{{
@@ -167,14 +193,14 @@ endfunction
 
     " Move a line of text using <up><down>
     " http://vim.wikia.com/wiki/Moving_lines_up_or_down
-    nnoremap <up>   :m .-2<CR>==
-    nnoremap <down> :m .+1<CR>==
-    vnoremap <up>   :m '<-2<CR>gv=gv
-    vnoremap <down> :m '>+1<CR>gv=gv
+    " nnoremap <up>   :m .-2<CR>==
+    " nnoremap <down> :m .+1<CR>==
+    " vnoremap <up>   :m '<-2<CR>gv=gv
+    " vnoremap <down> :m '>+1<CR>gv=gv
 
     " Move to prev/next buffer
-    nnoremap <left>  <ESC>:bN<CR>
-    nnoremap <right> <ESC>:bn<CR>
+    " nnoremap <left>  <ESC>:bN<CR>
+    " nnoremap <right> <ESC>:bn<CR>
 
     " press Backspace to toggle the current fold open/closed. However, if the cursor is not in a fold, move to the right
     nnoremap <silent> <BS> @=(foldlevel('.')?'za':"\<BS>")<CR>
@@ -670,4 +696,29 @@ augroup END
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+if exists('$TMUX')
+  set term=screen-256color
+endif
+
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+endif
+
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "<Esc>Ptmux;"
+  let tmux_end = "<Esc>"
+
+  return tmux_start . substitute(a:s, "<Esc>", "<Esc><Esc>", 'g') . tmux_end
+endfunction
 
