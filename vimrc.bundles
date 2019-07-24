@@ -105,9 +105,9 @@ Plug 'mattn/ctrlp-mark'
 Plug 'tacahiroy/ctrlp-funky'
     let g:ctrlp_funky_syntax_highlight = 1
 
-Plug 'bufkill.vim'
-Plug 'matchit.zip'
-Plug 'tComment'
+" Plug 'bufkill.vim'
+" Plug 'matchit.zip'
+" Plug 'tComment'
 Plug 'jiangmiao/auto-pairs'
 Plug 'gabesoft/vim-ags'
     nnoremap <C-y> :Ags <cword>
